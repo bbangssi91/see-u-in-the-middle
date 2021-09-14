@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Header import -->
+<head th:replace="fragments/header :: header">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<!-- Navigation import -->
+	<div th:replace="fragments/navigation :: navigation"></div>
+	
+	<form action="">
+		<div class="container">
+			  <div class="mb-3 row">
+			    <label for="staticEmail" class="col-sm-2 col-form-label">이메일주소</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="staticEmail" placeholder="email@example.com" required="required">
+			    </div>
+			  </div>
+			  <div class="mb-3 row">
+			    <label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
+			    <div class="col-sm-10">
+			      <input type="password" class="form-control" id="inputPassword" required="required">
+			    </div>
+			  </div>
+			  <div class="mb-3 row">
+			    <label for="inputUserName" class="col-sm-2 col-form-label">이름</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputUserName" required="required">
+			    </div>
+			  </div>
+			  <div class="mb-3 row">
+			    <label for="selectAge" class="col-sm-2 col-form-label">나이</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="selectAge" required="required">
+			    </div>
+			  </div>
+			  <div class="mb-3 col">
+				  <label for="checkGender" class="col-sm-2 col-form-label">성별</label>
+				  <div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required="required">
+					  <label class="form-check-label" for="inlineRadio2">남성</label>
+				  </div>
+		  		  <div class="form-check form-check-inline">
+					  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" required="required">
+					  <label class="form-check-label" for="inlineRadio2">여성</label>
+				  </div>
+			  </div>
+			  <div class="mb-3 row">
+			    <label for="inputAddress" class="col-sm-2 col-form-label">주소</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="inputAddress" required="required">
+			    </div>
+			  </div>
+		</div>
+		
+		<div class="row justify-content-around fixed-bottom" style="padding-bottom: 10%">
+			<button type="submit" class="btn btn-outline-primary">회원가입</button>
+			<button type="reset" class="btn btn-outline-info">초기화</button>
+			<a type="button" class="btn btn-outline-dark" href="/">돌아가기</a>
+		</div>
+	</form>
+	
+
+</body>
+<!-- Footer import -->
+<footer th:replace="fragments/footer :: footer"></footer>
+
+</html>

@@ -1,11 +1,15 @@
 package com.study.seeuinthemiddle.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.study.seeuinthemiddle.Exception.DuplicatedUserException;
 import com.study.seeuinthemiddle.domain.User;
 import com.study.seeuinthemiddle.repository.UserRepository;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -17,7 +21,7 @@ public class UserService {
 
     // TODO : 1. 회원가입
     @Transactional
-    public Long join(User user){
+    public Long signUp(User user){
 
         // 중복회원 체크
         validateDuplicatedUser(user);
@@ -27,10 +31,20 @@ public class UserService {
     }
 
     // TODO : 2. 전체 회원조회
+    public List<User> findAll(){
+    	return userRepository.findAll();
+    }
+    
     // TODO : 3. 특정 회원조회
+    public User findOne(User user) {
+    	return userRepository.findOne(user.getId());
+    }
+    
     // TODO : 4. 회원 정보수정
+    
     // TODO : 5. 회원 탈퇴
-
+    
+    
     private void validateDuplicatedUser(User user) {
         User findUser = userRepository.findByEmailAddress(user.getEmail());
 

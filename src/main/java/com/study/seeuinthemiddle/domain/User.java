@@ -17,6 +17,8 @@ public class User {
     private String email;
     private String name;
     private int age;
+    
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Embedded
