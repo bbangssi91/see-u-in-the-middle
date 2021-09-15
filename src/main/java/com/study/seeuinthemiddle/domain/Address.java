@@ -1,23 +1,24 @@
 package com.study.seeuinthemiddle.domain;
 
-import lombok.Getter;
-
 import javax.persistence.Embeddable;
 
-@Embeddable
+import lombok.Builder;
+import lombok.Getter;
+
 @Getter
+@Embeddable
 public class Address {
 
-    private String city;
-    private String street;
-    private String detailAddress;
+    private String address1;
+    private String address2;
+    
 
     protected Address() {
     }
-
-    public Address(String city, String street, String detailAddress) {
-        this.city = city;
-        this.street = street;
-        this.detailAddress = detailAddress;
+    
+    @Builder
+    public Address(String address1, String address2) {
+    	this.address1 = address1;
+    	this.address2 = address2;
     }
 }
