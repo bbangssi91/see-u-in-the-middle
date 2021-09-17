@@ -31,13 +31,22 @@ public class UserController {
         return "";
     }
     
+    @GetMapping(value = "/findUser")
+    public void findAll() {
+    	userService.findAll();
+    }
+    
+    
+    
     /**
      * 회원가입 요청 시, 호출 화면
      * 
      * @return signUp화면
      */
     @GetMapping(value = "/signUp")
-    public String signUpForm() {
+    public String signUpForm(Model model) {
+    	model.addAttribute("form", new SignUpForm());
+    	
     	return "/users/signUp";
     }
     
@@ -51,33 +60,21 @@ public class UserController {
      */
     @PostMapping(value = "/signUp")
     public String signUpUser(@Valid SignUpForm form, BindingResult bindingResult) {
-    	
+    	System.out.println("아");
+    	System.out.println("아아" + form.getAge());
+    	    	
     	if(bindingResult.hasErrors()) {
     		log.debug("===== [Error] =====");
     		log.debug(bindingResult.getAllErrors().toString());
     		log.debug("===================");
     	}
     	
-    	User user = getBindUserVO(form);
+    	
+    	
+    	User user = User.fillSignUp(form);
     	userService.signUp(user);
     	
     	return "/redirect:";
     }
-    
-    /**
-     * Form에서 넘어온 값을 User 엔티티에 매핑하여 반환하는 메소드
-     * 
-     * @param 회원가입 form VO
-     */
-	private User getBindUserVO(SignUpForm form) {
-		User user = new User();
-    	
-    	user.setEmail(form.getEmail());
-    	user.setName(form.getName());
-    	user.setAge(form.getAge());
-    	user.setGender(form.getGender());
-    	
-    	return user;
-	}
 
 }

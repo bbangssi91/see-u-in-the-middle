@@ -21,13 +21,10 @@ public class UserService {
 
     // TODO : 1. 회원가입
     @Transactional
-    public Long signUp(User user){
-
+    public void signUp(User user){
         // 중복회원 체크
         validateDuplicatedUser(user);
         userRepository.save(user);
-
-        return user.getId();
     }
 
     // TODO : 2. 전체 회원조회

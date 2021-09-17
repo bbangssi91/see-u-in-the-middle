@@ -17,6 +17,12 @@ public class SignUpForm {
 	private String name;
 	private int age;
 	private Gender gender;
-	private String address;
+	
+	@NotEmpty(message = "우편번호 찾기 버튼으로 주소를 선택하시기 바랍니다.")
+	private String postcode; // 우편번호
+	@NotEmpty(message = "우편번호 찾기 버튼으로 주소를 선택하시기 바랍니다.")
+	private String address; // 기본주소
+	@NotEmpty(message = "상세주소를 입력하십시오.")
+	private String detailAddress; // 상세주소
 	
 }

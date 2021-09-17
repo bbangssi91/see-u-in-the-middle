@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.study.seeuinthemiddle.domain.User;
 
 import lombok.RequiredArgsConstructor;
-
-@Repository
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @RequiredArgsConstructor
+@Repository
 public class UserRepository {
 
     private final EntityManager em;
@@ -22,7 +23,8 @@ public class UserRepository {
      * @param   "사용자 정보"
      */
     public void save(User user) {
-        em.persist(user);
+    	log.debug("===========> " + user.toString() + " ==============");
+    	em.persist(user);
     }
 
     /**
@@ -55,10 +57,6 @@ public class UserRepository {
     public User findByEmailAddress(String email) {
         return em.find(User.class, email);
     }
-
-    
-
-
 
 
 }
