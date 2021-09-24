@@ -7,8 +7,11 @@ spring:
 
   jpa:
     hibernate:
-      #       ddl-auto: create
-      ddl-auto: create-drop
+      ##############################
+      # 메모리DB에 저장하고 싶을 경우 update #
+      ##############################
+      ddl-auto: update 
+      #ddl-auto: create-drop
     properties:
       hibernate:
         format_sql: true

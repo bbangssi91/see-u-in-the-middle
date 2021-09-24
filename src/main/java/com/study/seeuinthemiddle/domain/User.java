@@ -15,6 +15,7 @@ import javax.validation.constraints.NotEmpty;
 
 import com.study.seeuinthemiddle.domain.enumpackage.Gender;
 import com.study.seeuinthemiddle.domain.enumpackage.UserAuth;
+import com.study.seeuinthemiddle.domain.enumpackage.ValidFlag;
 import com.study.seeuinthemiddle.formVO.user.SignUpForm;
 
 import lombok.AccessLevel;
@@ -51,6 +52,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private UserAuth userAuth;
     
+    @Enumerated(EnumType.STRING)
+    private ValidFlag validFlag;
+    
 	public static User fillSignUp(@Valid SignUpForm form) {
 		
 		return User.builder()
@@ -65,11 +69,25 @@ public class User {
 							.build()
 						)
 				.userAuth(UserAuth.USER) // 회원가입 form을 통해 접속한 유저 ( default : USER )
+				.validFlag(ValidFlag.Y) // 사용유무 ( default : Y )
 				.build();
 	}
 
+	public static User update(@Valid SignUpForm userForm) {
+		
+		return User.builder()
+    			.name(userForm.getName())
+    			.gender(userForm.getGender())
+    			.address(Address.builder()
+							.postcode(userForm.getPostcode())
+							.address(userForm.getAddress())
+							.detailAddress(userForm.getDetailAddress())
+							.build())
+    			.build();
+	}
+	
 	@Builder
-	public User(Long id, String email, String name, int age, Gender gender, Address address, UserAuth userAuth) {
+	public User(Long id, String email, String name, int age, Gender gender, Address address, UserAuth userAuth, ValidFlag validFlag) {
 		this.id = id;
 		this.email = email;
 		this.name = name;
@@ -77,6 +95,7 @@ public class User {
 		this.gender = gender;
 		this.address = address;
 		this.userAuth = userAuth;
+		this.validFlag = validFlag;
 	}
 
 }

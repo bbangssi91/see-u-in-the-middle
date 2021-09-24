@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Header import -->
+<head th:replace="fragments/header :: header">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<title>사용자 목록</title>
+</head>
+<body>
+	<!-- Navigation import -->
+	<div th:replace="fragments/navigation :: navigation"></div>
+	
+	<!-- 사용자 목록 그리드 -->
+	<table class="table caption-top">
+		<caption>사용자  목록</caption>
+		<thead align="center">
+			<tr class="table-info">
+				<th scope="col">#</th>
+				<th scope="col">Email 주소</th>
+				<th scope="col">이름</th>
+				<th scope="col">나이</th>
+				<th scope="col">성별</th>
+				<th scope="col">우편번호</th>
+				<th scope="col">주소</th>
+				<th scope="col">상세주소</th>
+				<th scope="col">사용자 권한</th>
+				<th scope="col">사용유무</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td>test@naver.com</td>
+				<td>김김김</td>
+				<td>22</td>
+				<td>MALE</td>
+				<td>138-995</td>
+				<td>서울시 여의대방로 ddddddddddddddddddddddddddddddddddddddddddddd</td>
+				<td>대방아파트 104동 ddddddddddddddddddddddddddddddddddddddddddd</td>
+				<td>USER</td>
+				<td>Y</td>
+			</tr>
+		</tbody>
+	</table>
+
+	
+</body>
+
+<!-- Footer import -->
+<footer th:replace="fragments/footer :: footer"></footer>
+
+</html>

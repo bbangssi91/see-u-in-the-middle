@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.study.seeuinthemiddle.Exception.DuplicatedUserException;
 import com.study.seeuinthemiddle.domain.User;
+import com.study.seeuinthemiddle.formVO.user.SignUpForm;
 import com.study.seeuinthemiddle.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class UserService {
     }
 
     // TODO : 2. 전체 회원조회
-    public List<User> findAll(){
+    public List<User> findAllUsers(){
     	return userRepository.findAll();
     }
     
@@ -37,6 +38,13 @@ public class UserService {
     }
     
     // TODO : 4. 회원 정보수정
+    @Transactional
+	public void updateUser(Long userId, SignUpForm userForm) {
+    	User resultUser = userRepository.findOne(userId);
+    	
+    	User.update(userForm);
+    	
+	}
     
     // TODO : 5. 회원 탈퇴
     
@@ -49,6 +57,8 @@ public class UserService {
 
 
     }
+
+
 
 
 }
