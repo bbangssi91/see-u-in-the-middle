@@ -54,8 +54,10 @@ public class UserRepository {
      * @param   "email 주소"
      * @return  "해당 이메일 주소에 해당하는 회원"
      */
-    public User findByEmailAddress(String email) {
-        return em.find(User.class, email);
+    public List<User> findByEmailAddress(String email) {
+        return em.createQuery("select u from User u where u.email = :email", User.class)
+        		.setParameter("email", email)
+        		.getResultList();
     }
 
 

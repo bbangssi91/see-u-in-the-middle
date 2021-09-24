@@ -14,6 +14,9 @@ public class SignUpForm {
 	@NotEmpty(message = "이메일 주소는 필수입니다.")
 	private String email;
 	
+	@NotEmpty(message = "비밀번호는 필수입니다.")
+	private String password;
+	
 	private String name;
 	private int age;
 	private Gender gender;

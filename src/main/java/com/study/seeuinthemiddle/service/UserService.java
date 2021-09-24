@@ -11,10 +11,9 @@ import com.study.seeuinthemiddle.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
-
-@Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
+@Service
 public class UserService {
 
     private final UserRepository userRepository;
@@ -41,11 +40,10 @@ public class UserService {
     
     // TODO : 5. 회원 탈퇴
     
-    
     private void validateDuplicatedUser(User user) {
-        User findUser = userRepository.findByEmailAddress(user.getEmail());
+    	List<User> findUser = userRepository.findByEmailAddress(user.getEmail());
 
-        if(findUser != null){
+        if(!findUser.isEmpty()){
             throw new DuplicatedUserException("이미 가입된 회원입니다.");
         }
 

@@ -15,9 +15,9 @@ import com.study.seeuinthemiddle.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Controller
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
+@Controller
 public class UserController {
 
     private final UserService userService;
@@ -45,7 +45,7 @@ public class UserController {
      */
     @GetMapping(value = "/signUp")
     public String signUpForm(Model model) {
-    	model.addAttribute("form", new SignUpForm());
+    	model.addAttribute("signUpForm", new SignUpForm());
     	
     	return "/users/signUp";
     }
@@ -60,21 +60,17 @@ public class UserController {
      */
     @PostMapping(value = "/signUp")
     public String signUpUser(@Valid SignUpForm form, BindingResult bindingResult) {
-    	System.out.println("아");
-    	System.out.println("아아" + form.getAge());
-    	    	
+    	
     	if(bindingResult.hasErrors()) {
     		log.debug("===== [Error] =====");
     		log.debug(bindingResult.getAllErrors().toString());
     		log.debug("===================");
     	}
     	
-    	
-    	
     	User user = User.fillSignUp(form);
     	userService.signUp(user);
     	
-    	return "/redirect:";
+    	return "redirect:/";
     }
 
 }

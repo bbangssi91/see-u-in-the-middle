@@ -11,41 +11,41 @@
 	<div th:replace="fragments/navigation :: navigation"></div>
 	
 	<!-- 회원가입 Form 영역 -->
-	<form role="form" th:action="@{/signUp}" th:object="${form}" method="post">
+	<form role="form" th:action="@{/signUp}" th:object="${signUpForm}" method="post">
 		<div class="container">
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-2 col-form-label">이메일주소</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="staticEmail" placeholder="email@example.com" required="required">
+					<input type="text" th:field="*{email}" class="form-control" id="staticEmail" placeholder="email@example.com" required="required">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
 				<div class="col-sm-10">
-					<input type="password" class="form-control" id="inputPassword" required="required">
+					<input type="password" th:field="*{password}" class="form-control" id="inputPassword" required="required">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputUserName" class="col-sm-2 col-form-label">이름</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputUserName" required="required">
+					<input type="text" th:field="*{name}" class="form-control" id="inputUserName" required="required">
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="selectAge" class="col-sm-2 col-form-label">나이</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="selectAge" required="required">
+					<input type="text" th:field="*{age}" class="form-control" id="selectAge" required="required">
 				</div>
 			</div>
 			<div class="mb-3 col">
 				<label for="checkGender" class="col-sm-2 col-form-label">성별</label>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required="required">
-					<label class="form-check-label" for="inlineRadio2">남성</label>
+					<input class="form-check-input" th:field="*{gender}" th:value="MALE" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required="required">
+					<label class="form-check-label" for="checkGender">남성</label>
 				</div>
 		  		<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" required="required">
-					<label class="form-check-label" for="inlineRadio2">여성</label>
+					<input class="form-check-input" th:field="*{gender}" th:value="FEMALE" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" required="required">
+					<label class="form-check-label" for="checkGender">여성</label>
 				</div>
 			</div>
 			
@@ -53,7 +53,7 @@
 			<div class="mb-3 row">
 				<label for="inputAddress1" class="col-sm-2 col-form-label">주소</label>
 				<div class="col-auto">
-					<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
+					<input type="text" th:field="*{postcode}" class="form-control" id="sample6_postcode" placeholder="우편번호" readonly="readonly">
 				</div>
 				<div class="col-sm-5">
 					<input type="button" class="btn btn-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -62,13 +62,13 @@
 			<div class="mb-3 row">
 				<label for="sample6_address" class="col-sm-2 col-form-label"></label>
 				<div class="col-sm-5">
-					<input type="text" class="form-control" id="sample6_address" placeholder="주소" readonly="readonly"><br>
+					<input type="text" th:field="*{address}" class="form-control" id="sample6_address" placeholder="주소" readonly="readonly"><br>
 				</div>
 			</div>
 			<div class="mb-3 row">
 				<label for="inputAddress2" class="col-sm-2 col-form-label">세부 주소</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소" required="required">
+					<input type="text" th:field="*{detailAddress}" class="form-control" id="sample6_detailAddress" placeholder="상세주소" required="required">
 				</div>
 			</div>
 			<input type="text" id="sample6_extraAddress" placeholder="참고항목" hidden="true">
